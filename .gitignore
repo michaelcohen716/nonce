@@ -1,13 +1,5 @@
+.env
 node_modules
-app.db
 chaindata
-genesis.json
-loom
-
-# If you want to versioning build files (and it is recommended) you should remove or comment the line below
-src/contracts
-
-/rinkeby_private_key
-/rinkeby_account
-/rinkeby_mnemonic
-/extdev_private_key
+private_key
+extdev_private_key

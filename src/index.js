@@ -2,10 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Contract from './contract'
 
+const extdev = new Web3('extdev-plasma-us1.dappchains.com')
+
 const Index = class Index extends React.Component {
   constructor(props) {
     super(props)
-
     this.textInput = React.createRef();
 
     this.contract = new Contract()
