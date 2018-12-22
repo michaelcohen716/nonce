@@ -1,5 +1,4 @@
 .env
 node_modules
 chaindata
-private_key
 extdev_private_key
