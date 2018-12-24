@@ -14,7 +14,7 @@ The typical dApp architecture requires users to interact with Ethereum using a b
 
 **Cost**
 
-Every change of state registered on the Ethereum main chain -- big or small -- costs ether. That means that a dApp user is paying a few cents every time they 'like' or 'post'. The high cost of micro-interactions lends to a poor user experience and is a clear barrier to mainstream adoption.
+Every change of state registered on the Ethereum main chain -- big or small -- costs ether. That means that a dApp user is paying a few cents every time they 'like' or 'post', for example. The high cost of micro-interactions lends to a poor user experience and is a clear barrier to mainstream adoption.
 
 ...
 
@@ -26,7 +26,24 @@ Configuring Loom required downloading a local client, running a few initializati
 
 In addition to Loom, Nonce uses a conventional Truffle/React project setup (and React Native later on) for smart contract and UI code management. 
 
-## **Stage 1: Applying Loom's ERC721x Standard** 
+## **Stage 1: Applying Loom's ERC721x Token Standard** 
+
+The bare bones smart contract implementation of Nonce should satisfy the following product specifications:
+
+####There should be **two types of user**
+* **Minters** create tokens and control the supply
+* **Patrons** acquire, trade or burn tokens
+
+A generic user can play either role.
+
+####Minters should be able to mint a non-fungible set of transferable tokens
+  * The set can be limited or unlimited in quantity
+  * The minter can set or change the ether price of tokens in their set (it can be free, of course)
+
+####Patrons should be able to acquire and prove ownership of a portfolio of non-fungible tokens
+  * The patron can acquire an unclaimed token with a paid or unpaid transaction
+  * The patron can demonstrate ownership of an asset to the minter
+  * Future implementation will include a mechanism for trading, spending and/or reselling tokens
 
 
 
