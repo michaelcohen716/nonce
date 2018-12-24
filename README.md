@@ -1,5 +1,5 @@
 # Nonce
-___
+
 *Nonce is a ticketing and collectible dApp (decentralized app) powered by the Ethereum blockchain. This document catalogs the ideation, planning and development process and will evolve as the project progresses.*
 
 ## **Stage 0: Config** 
