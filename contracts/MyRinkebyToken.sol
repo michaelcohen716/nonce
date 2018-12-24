@@ -1,6 +1,6 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
 
-import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 
 contract MyRinkebyToken is ERC721Token {
     constructor() ERC721Token("MyRinkebyToken", "MRT") public {
