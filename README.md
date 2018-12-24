@@ -24,6 +24,10 @@ Nonce implements [Loom Network's PlasmaChain](https://medium.com/loom-network/de
 
 Configuring Loom required downloading a local client, running a few initialization commands and pulling Loom test tokens off the development faucet.
 
-In addition to Loom, Nonce uses a conventional Truffle/React project setup for smart contract and UI code management. 
+In addition to Loom, Nonce uses a conventional Truffle/React project setup (and React Native later on) for smart contract and UI code management. 
+
+## **Stage 1: Applying Loom's ERC721x Standard** 
+
+
 
 *...continued*
