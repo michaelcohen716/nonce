@@ -30,13 +30,13 @@ In addition to Loom, Nonce uses a conventional Truffle/React project setup (and 
 
 The bare bones smart contract implementation of Nonce should satisfy the following product specifications:
 
-####There should be **two types of user**
+#### There should be **two types of user**
 * **Minters** create tokens and control the supply
 * **Patrons** acquire, trade or burn tokens
 
 A generic user can play either role.
 
-####Minters should be able to mint a non-fungible set of transferable tokens, mapping to an offchain benefit or reward
+#### Minters should be able to mint a non-fungible set of transferable tokens, mapping to an offchain benefit or reward
   * The set can be limited or unlimited in quantity
   * The minter can set or change the ether price of tokens in their set (it can be free, of course)
 
