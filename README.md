@@ -40,7 +40,7 @@ A generic user can play either role.
   * The set can be limited or unlimited in quantity
   * The minter can set or change the ether price of tokens in their set (it can be free, of course)
 
-####Patrons should be able to acquire and prove ownership of a portfolio of non-fungible tokens
+#### Patrons should be able to acquire and prove ownership of a portfolio of non-fungible tokens
   * The patron can acquire an unclaimed token with a paid or unpaid transaction
   * The patron can demonstrate ownership of an asset to the minter, potentially for an offchain benefit or reward
   * Future implementation will include a mechanism for trading, spending and/or reselling tokens
