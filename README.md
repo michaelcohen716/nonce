@@ -1,6 +1,6 @@
 # Nonce
 
-*Nonce is a ticketing and collectible dApp (decentralized app) powered by the Ethereum blockchain. This document catalogs the ideation, planning and development process and will evolve as the project progresses.*
+*Nonce is a ticketing and collectible dApp (decentralized app) powered by the Ethereum blockchain. The product is intended to be a flexible vehicle for offchain benefits or rewards, e.g., permissioned and verifiable access to events, content or collectibles. This document catalogs the ideation, planning and development process and will evolve as the project progresses.*
 
 ## **Stage 0: Config** 
 There are two key issues with the vast majority of dApps:
@@ -20,7 +20,7 @@ Every change of state registered on the Ethereum main chain -- big or small -- c
 
 With these challenges well understood, there are several projects in the Ethereum ecosystem developing "Layer 2" solutions that abstract away the role of the network while mitigating the cost. 
 
-Nonce implements [Loom Network's PlasmaChain](https://medium.com/loom-network/deploying-your-first-app-to-loom-plasmachain-installing-loom-setting-up-your-environment-and-b04aecfccf1f), a sidechain built on top of the Ethereum main chain, where the transactions are nearly frictionless and the marginal cost approaches zero. PlasmaChain also offers an implementation of Plasma, an approach to the challenge of securely moving cryptoassets on and off the main network. 
+Nonce implements [Loom Network's PlasmaChain](https://medium.com/loom-network/deploying-your-first-app-to-loom-plasmachain-installing-loom-setting-up-your-environment-and-b04aecfccf1f), a sidechain built on top of the Ethereum main chain, where the transactions are nearly frictionless and the marginal cost approaches zero. Beyond the efficiency benefits, PlasmaChain offers an implementation of Plasma Cash, an approach to the challenge of securely moving cryptoassets on and off the main network. 
 
 Configuring Loom required downloading a local client, running a few initialization commands and pulling Loom test tokens off the development faucet.
 
@@ -36,13 +36,13 @@ The bare bones smart contract implementation of Nonce should satisfy the followi
 
 A generic user can play either role.
 
-####Minters should be able to mint a non-fungible set of transferable tokens
+####Minters should be able to mint a non-fungible set of transferable tokens, mapping to an offchain benefit or reward
   * The set can be limited or unlimited in quantity
   * The minter can set or change the ether price of tokens in their set (it can be free, of course)
 
 ####Patrons should be able to acquire and prove ownership of a portfolio of non-fungible tokens
   * The patron can acquire an unclaimed token with a paid or unpaid transaction
-  * The patron can demonstrate ownership of an asset to the minter
+  * The patron can demonstrate ownership of an asset to the minter, potentially for an offchain benefit or reward
   * Future implementation will include a mechanism for trading, spending and/or reselling tokens
 
 
