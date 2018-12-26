@@ -7,7 +7,7 @@ import "openzeppelin-solidity/contracts/AddressUtils.sol";
 
 import "../Libraries/ObjectsLib.sol";
 
-contract ERC721TokenNFT is ERC721, SupportsInterfaceWithLookup {
+contract ERC721XTokenNFT is ERC721, SupportsInterfaceWithLookup {
 
     using ObjectLib for ObjectLib.Operations;
     using ObjectLib for uint256;
