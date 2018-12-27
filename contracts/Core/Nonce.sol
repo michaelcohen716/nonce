@@ -9,4 +9,8 @@ contract Nonce is ERC721XToken {
 
     mapping(uint => uint) internal tokenIdToIndividualSupply;
 
+    function individualSupply(uint _tokenId) public view returns (uint) {
+        return tokenIdToIndividualSupply[_tokenId];
+    }
+
 }
