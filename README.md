@@ -46,5 +46,8 @@ A generic user can play either role.
   * Future implementation will include a mechanism for trading, spending and/or reselling tokens
 
 
+### Pull Requests for this Stage:
+  * ERC721X infrastructure: [PR #1](https://github.com/michaelcohen716/nonce/pull/1)
+  * Basic functionality for minting, acquiring tokens: [PR #2](https://github.com/michaelcohen716/nonce/pull/2)
 
 *...continued*
