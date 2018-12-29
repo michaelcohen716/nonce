@@ -1,14 +1,14 @@
 pragma solidity ^0.4.24;
 
-import "../Interfaces/ERC721X.sol";
-import "../Interfaces/ERC721XReceiver.sol";
+import "../../Interfaces/ERC721XI.sol";
+import "../../Interfaces/ERC721XReceiverI.sol";
 import "./ERC721XTokenNFT.sol";
 
 import "openzeppelin-solidity/contracts/AddressUtils.sol";
-import "../Libraries/ObjectsLib.sol";
+import "../../Libraries/ObjectsLib.sol";
 
 // Additional features over NFT token that make it compatible with batch transfers
-contract ERC721XToken is ERC721X, ERC721XTokenNFT {
+contract ERC721XToken is ERC721XI, ERC721XTokenNFT {
     
     using ObjectLib for ObjectLib.Operations;
     using AddressUtils for address;
@@ -130,7 +130,7 @@ contract ERC721XToken is ERC721X, ERC721XTokenNFT {
 
         // Pass data if recipient is contract
         if (_to.isContract()) {
-            bytes4 retval = ERC721XReceiver(_to).onERC721XBatchReceived(
+            bytes4 retval = ERC721XReceiverI(_to).onERC721XBatchReceived(
                 msg.sender, _from, _tokenIds, _amounts, _data
             );
             require(retval == ERC721X_BATCH_RECEIVE_SIG, "Incorrect return value");
@@ -198,7 +198,7 @@ contract ERC721XToken is ERC721X, ERC721XTokenNFT {
             return true;
         }
 
-        bytes4 retval = ERC721XReceiver(_to).onERC721XReceived(
+        bytes4 retval = ERC721XReceiverI(_to).onERC721XReceived(
             msg.sender, _from, _tokenId, _amount, _data);
         return(retval == ERC721X_RECEIVED);
     }

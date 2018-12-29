@@ -5,7 +5,7 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Receiver.sol";
 import "openzeppelin-solidity/contracts/AddressUtils.sol";
 
-import "../Libraries/ObjectsLib.sol";
+import "../../Libraries/ObjectsLib.sol";
 
 contract ERC721XTokenNFT is ERC721, SupportsInterfaceWithLookup {
 
@@ -289,10 +289,7 @@ contract ERC721XTokenNFT is ERC721, SupportsInterfaceWithLookup {
         view
         returns (bool)
     {
-        return (
-            _spender == _owner ||
-            getApproved(_tokenId) == _spender ||
-            isApprovedForAll(_owner, _spender)
+        return (_spender == _owner || getApproved(_tokenId) == _spender || isApprovedForAll(_owner, _spender)
         );
     }
 

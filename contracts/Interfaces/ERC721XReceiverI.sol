@@ -6,7 +6,7 @@ pragma solidity 0.4.24;
  * @dev Interface for any contract that wants to support safeTransfers
  *  from ERC721X contracts.
  */
-contract ERC721XReceiver {
+contract ERC721XReceiverI {
     /**
         * @dev Magic value to be returned upon successful reception of an amount of ERC721X tokens
         *  Equals to `bytes4(keccak256("onERC721XReceived(address,uint256,bytes)"))`,
