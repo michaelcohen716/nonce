@@ -36,7 +36,7 @@ The bare bones smart contract implementation of Nonce should satisfy the followi
 
 A generic user can play either role.
 
-#### Minters should be able to mint a non-fungible set of transferable tokens, mapping to an offchain benefit or reward
+#### Minters should be able to mint a unique set of transferable tokens, mapping to an offchain benefit or reward
   * The set can be limited or unlimited in quantity
   * The minter can set or change the ether price of tokens in their set (it can be free, of course)
 
