@@ -2,7 +2,9 @@ pragma solidity ^0.4.24;
 
 import "./ERC721X/ERC721XToken.sol";
 import "../Helpers/Ownable.sol";
+import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 
+// Deployed to extdev
 contract Nonce is ERC721XToken, Ownable {
     function name() external view returns (string) {
         return "Nonce";
@@ -23,6 +25,13 @@ contract Nonce is ERC721XToken, Ownable {
     function individualSupply(uint _tokenId) public view returns (uint) {
         return tokenIdToSupply[_tokenId];
     }
+
+    /** @dev future implementation of transfer gateway
+     * address public gateway; 
+     * constructor(address _gateway) public{
+     *   gateway = _gateway;
+     * }
+    */
 
     mapping(uint => uint) internal nftTokenIdToMouldId;
     uint nftTokenIdIndex = 1000000;

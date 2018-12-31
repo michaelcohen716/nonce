@@ -2,6 +2,7 @@ pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 
+// Deployed to extdev
 contract MyToken is ERC721Token {
     // Transfer Gateway contract address
     address public gateway;
