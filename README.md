@@ -49,5 +49,6 @@ A generic user can play either role.
 ### Pull Requests for this Stage:
   * ERC721X infrastructure: [PR #1](https://github.com/michaelcohen716/nonce/pull/1)
   * Basic functionality for minting, acquiring tokens: [PR #2](https://github.com/michaelcohen716/nonce/pull/2)
+  * Foundation for future implementation of PlasmaChain gateway: [PR #3](https://github.com/michaelcohen716/nonce/pull/3)
 
 *...continued*
