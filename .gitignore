@@ -3,3 +3,4 @@ node_modules
 chaindata
 extdev_private_key
 .eslintrc.js
+src/contracts

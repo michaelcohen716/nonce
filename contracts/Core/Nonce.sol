@@ -14,17 +14,21 @@ contract Nonce is ERC721XToken, Ownable {
         return "NONCE";
     }
 
-    mapping(uint => uint) internal tokenIdToSupply;
-    mapping(uint => address) public tokenIdToOwner;
-    mapping(uint => bytes32) public tokenIdToName;
-    mapping(uint => uint) public tokenIdToPrice;
 
-    event TokenMinted(address indexed creator, uint tokenId);
-    event TokenAwarded(uint indexed tokenId, address claimer, uint amount);
+    mapping(uint => uint) public tokenIdToIndex;
 
-    function individualSupply(uint _tokenId) public view returns (uint) {
-        return tokenIdToSupply[_tokenId];
+    struct NonceToken {
+        uint tokenId;
+        bytes32 name;
+        address creator;
+        uint supply;
+        uint price;
     }
+
+    NonceToken[] public allNonceTokens;
+
+    event TokenMinted(address indexed creator, uint tokenId, uint supply);
+    event TokenAwarded(uint indexed tokenId, address claimer, uint amount);
 
     /** @dev future implementation of transfer gateway
      * address public gateway; 
@@ -45,14 +49,20 @@ contract Nonce is ERC721XToken, Ownable {
     function mintToken(bytes32 _tokenName, uint _supply, uint _priceInGwei) public {
         uint tokenId = uint(keccak256(abi.encodePacked(msg.sender, _tokenName, block.number)));
         require(!exists(tokenId), "Error: Tried to mint duplicate token id");
-        _mint(tokenId, msg.sender, _supply);
 
-        tokenIdToSupply[tokenId] = _supply;
-        tokenIdToOwner[tokenId] = msg.sender;
-        tokenIdToName[tokenId] = _tokenName;
-        tokenIdToPrice[tokenId] = _priceInGwei;
-        
-        emit TokenMinted(msg.sender, tokenId);
+        uint tokenIndex = allNonceTokens.push(
+            NonceToken(
+                tokenId, 
+                _tokenName, 
+                msg.sender, 
+                _supply, 
+                _priceInGwei
+                )
+            ) - 1;
+        tokenIdToIndex[tokenId] = tokenIndex;
+
+        _mint(tokenId, msg.sender, _supply);
+        emit TokenMinted(msg.sender, tokenId, _supply);
     }
 
     /**
@@ -61,13 +71,14 @@ contract Nonce is ERC721XToken, Ownable {
      * @param _amount quantity of tokens purchased/acquired
      */
     function acquireToken(uint _tokenId, uint _amount) public payable { 
+        (, , address tokenOwner, uint supply, uint price) = getTokenWithId(_tokenId);
         require(exists(_tokenId), "TokenID has not been minted"); 
-        require(msg.value == tokenIdToPrice[_tokenId], "Incorrect price for token");
-        require(msg.sender != tokenIdToOwner[_tokenId], "Can't buy your own token");
+        require(msg.value == price, "Incorrect price for token");
+        require(msg.sender != tokenOwner, "Can't buy your own token");
 
-        if (individualSupply(_tokenId) > 0) { // Fixed supply token
-            require(_amount <= balanceOf(msg.sender, _tokenId), "Quantity greater than available balance"); //DOES THIS WORK
-            _updateTokenBalance(address(this), _tokenId, _amount, ObjectLib.Operations.SUB); 
+        if (supply > 0) { // Fixed supply token
+            require(_amount <= balanceOf(tokenOwner, _tokenId), "Quantity greater than available balance"); //DOES THIS WORK
+            _updateTokenBalance(tokenOwner, _tokenId, _amount, ObjectLib.Operations.SUB); 
         } 
         _updateTokenBalance(msg.sender, _tokenId, _amount, ObjectLib.Operations.ADD); 
         emit TokenAwarded(_tokenId, msg.sender, _amount); 
@@ -99,6 +110,27 @@ contract Nonce is ERC721XToken, Ownable {
         _updateTokenBalance(msg.sender, _tokenId, 0, ObjectLib.Operations.REPLACE);
         _updateTokenBalance(msg.sender, nftTokenIdToMouldId[_tokenId], 1, ObjectLib.Operations.ADD);
         emit TransferWithQuantity(address(this), msg.sender, nftTokenIdToMouldId[_tokenId], 1);
+    }
+
+    function getTokenWithIndex(uint _index) public view returns(uint, bytes32, address, uint, uint){
+        return (
+            allNonceTokens[_index].tokenId,
+            allNonceTokens[_index].name,
+            allNonceTokens[_index].creator,
+            allNonceTokens[_index].supply,
+            allNonceTokens[_index].price
+        );
+    }
+
+    function getTokenWithId(uint tokenId) public view returns(uint, bytes32, address, uint, uint){
+        uint _index = tokenIdToIndex[tokenId];
+        return (
+            allNonceTokens[_index].tokenId,
+            allNonceTokens[_index].name,
+            allNonceTokens[_index].creator,
+            allNonceTokens[_index].supply,
+            allNonceTokens[_index].price
+        );
     }
 
 
