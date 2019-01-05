@@ -29,4 +29,13 @@ contract('Nonce', async(accounts) => {
             return ev.supply === 100;
         });
     })
+
+    it('Should be able to mint a token that costs ether', async () => {
+        const priceInWei = 1000000;
+        const tx3 = await nonce.mintToken(web3.utils.fromAscii("ExpensiveToken"), 100, priceInWei, { from: christina });
+
+        truffleAssert.eventEmitted(tx3, 'TokenMinted', async (ev) => {
+            return ev.price === priceInWei;
+        });
+    })
 })
