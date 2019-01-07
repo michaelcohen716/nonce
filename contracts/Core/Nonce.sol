@@ -14,8 +14,8 @@ contract Nonce is ERC721XToken, Ownable {
         return "NONCE";
     }
 
-
     mapping(uint => uint) public tokenIdToIndex;
+    mapping(uint => uint) public tokenIdToAvailableSupply;
 
     struct NonceToken {
         uint tokenId;
@@ -44,9 +44,9 @@ contract Nonce is ERC721XToken, Ownable {
      * @dev Creates a new unique token, controlled by the creator
      * @param _tokenName Name given to token by creator
      * @param _supply Maximum quantity of token available [Enter '0' for unlimited supply token]
-     * @param _priceInGwei Price for other users to buy token [Enter '0' for free token]
+     * @param _price Price for other users to buy token [Enter '0' for free token]
      */
-    function mintToken(bytes32 _tokenName, uint _supply, uint _priceInGwei) public {
+    function mintToken(bytes32 _tokenName, uint _supply, uint _price) public {
         uint tokenId = uint(keccak256(abi.encodePacked(msg.sender, _tokenName, block.number)));
         require(!exists(tokenId), "Error: Tried to mint duplicate token id");
 
@@ -56,10 +56,11 @@ contract Nonce is ERC721XToken, Ownable {
                 _tokenName, 
                 msg.sender, 
                 _supply, 
-                _priceInGwei
+                _price
                 )
             ) - 1;
         tokenIdToIndex[tokenId] = tokenIndex;
+        tokenIdToAvailableSupply[tokenId] = _supply;
 
         _mint(tokenId, msg.sender, _supply);
         emit TokenMinted(msg.sender, tokenId, _supply);
@@ -79,7 +80,9 @@ contract Nonce is ERC721XToken, Ownable {
         if (supply > 0) { // Fixed supply token
             require(_amount <= balanceOf(tokenOwner, _tokenId), "Quantity greater than available balance"); //DOES THIS WORK
             _updateTokenBalance(tokenOwner, _tokenId, _amount, ObjectLib.Operations.SUB); 
+            tokenIdToAvailableSupply[_tokenId] -= _amount;
         } 
+        
         _updateTokenBalance(msg.sender, _tokenId, _amount, ObjectLib.Operations.ADD); 
         emit TokenAwarded(_tokenId, msg.sender, _amount); 
     }
@@ -112,6 +115,10 @@ contract Nonce is ERC721XToken, Ownable {
         emit TransferWithQuantity(address(this), msg.sender, nftTokenIdToMouldId[_tokenId], 1);
     }
 
+
+    /** 
+    * @dev utilities    
+    */
     function getTokenWithIndex(uint _index) public view returns(uint, bytes32, address, uint, uint){
         return (
             allNonceTokens[_index].tokenId,
@@ -122,8 +129,8 @@ contract Nonce is ERC721XToken, Ownable {
         );
     }
 
-    function getTokenWithId(uint tokenId) public view returns(uint, bytes32, address, uint, uint){
-        uint _index = tokenIdToIndex[tokenId];
+    function getTokenWithId(uint _tokenId) public view returns(uint tokenId, bytes32 tokenName, address creator, uint supply, uint price){
+        uint _index = tokenIdToIndex[_tokenId];
         return (
             allNonceTokens[_index].tokenId,
             allNonceTokens[_index].name,
@@ -131,6 +138,18 @@ contract Nonce is ERC721XToken, Ownable {
             allNonceTokens[_index].supply,
             allNonceTokens[_index].price
         );
+    }
+
+    function getTokenIdByIndex(uint _index) public view returns(uint) {
+        return allNonceTokens[_index].tokenId;
+    }
+
+    function getTokenPriceByIndex(uint _index) public view returns(uint) {
+        return allNonceTokens[_index].price;
+    }
+
+    function getAvailableSupply(uint _tokenId) public view returns(uint) {
+        return tokenIdToAvailableSupply[_tokenId];
     }
 
 
