@@ -1,6 +1,7 @@
-# Nonce
-
 *Nonce is a ticketing, content and collectible dApp (decentralized app) powered by the Ethereum blockchain. The product is intended to be a flexible vehicle for offchain benefits or rewards, e.g., permissioned and verifiable access to events, content or collectibles. This document catalogs the ideation, planning and development process and will evolve as the project progresses.*
+
+![image info](./src/assets/readme/provisional-logo.png)
+
 
 ## **Stage 0: Config** 
 There are two key issues with the vast majority of dApps:
@@ -22,9 +23,14 @@ With these challenges well understood, there are several projects in the Ethereu
 
 Nonce implements [Loom Network's PlasmaChain](https://medium.com/loom-network/deploying-your-first-app-to-loom-plasmachain-installing-loom-setting-up-your-environment-and-b04aecfccf1f), a sidechain built on top of the Ethereum main chain, where the transactions are nearly frictionless and the marginal cost approaches zero. Beyond the efficiency benefits, PlasmaChain offers an implementation of Plasma Cash, an approach to the challenge of securely moving cryptoassets on and off the main network. 
 
+![Loom](./src/assets/readme/loom-network.jpg)
+
+
 Configuring Loom required downloading a local client, running a few initialization commands and pulling Loom test tokens off the development faucet.
 
-In addition to Loom, Nonce uses a conventional Truffle/React project setup (and React Native later on) for smart contract and UI code management. 
+In addition to Loom, Nonce uses a conventional Truffle project setup for smart contract and UI code management.
+
+![Truffle](./src/assets/readme/truffle.png)
 
 ## **Stage 1: Applying Loom's ERC721x Token Standard** 
 
@@ -46,10 +52,25 @@ A generic user can play either role.
   * Future implementation will include a mechanism for trading, spending and/or reselling tokens
 
 
-### Pull Requests for this Stage:
+#### Pull Requests for this Stage:
   * ERC721X infrastructure: [PR #1](https://github.com/michaelcohen716/nonce/pull/1)
   * Basic functionality for minting, acquiring tokens: [PR #2](https://github.com/michaelcohen716/nonce/pull/2), [PR #5](https://github.com/michaelcohen716/nonce/pull/5)
   * Foundation for future implementation of PlasmaChain gateway: [PR #3](https://github.com/michaelcohen716/nonce/pull/3)
   * Testing: [PR #4](https://github.com/michaelcohen716/nonce/pull/4), [PR #5](https://github.com/michaelcohen716/nonce/pull/5)
+
+
+## **Stage 2: Front End Config** 
+
+To get started with Loom, the initial Nonce directory cloned the [Truffle Dappchain Example](https://github.com/loomnetwork/truffle-dappchain-example) which uses a conventional React web setup. Nonce is mobile first, however, so this stage involved migrating the project to React Native. The project also uses Redux, Typescript and several other JavaScript libraries. 
+
+<p>
+  <img src="./src/assets/readme/redux.png" width="200" style="margin-bottom: -20px" /> 
+  <img src="./src/assets/readme/react-native.png" width="200" /> 
+  <img src="./src/assets/readme/typescript.png" width="200" style="margin-bottom: 15px"/> 
+</p>
+
+#### Pull Requests for this Stage:
+  * React Native, Typescript setup: [PR #6](https://github.com/michaelcohen716/nonce/pull/6)
+
 
 *...continued*
