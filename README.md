@@ -4,7 +4,7 @@
   <img src="./src/assets/readme/provisional-logo.png" width="550px" /> 
 </p>
 
-## **Stage 0: Config** 
+## **Stage 0: Ethereum Config** 
 There are two key issues with the vast majority of dApps:
 
 - The **friction** of interacting with the Ethereum network
@@ -22,7 +22,7 @@ Every change of state registered on the Ethereum main chain -- big or small -- c
 
 With these challenges well understood, there are several projects in the Ethereum ecosystem developing "Layer 2" solutions that abstract away the role of the network while mitigating the cost. 
 
-Nonce implements [Loom Network's PlasmaChain](https://medium.com/loom-network/deploying-your-first-app-to-loom-plasmachain-installing-loom-setting-up-your-environment-and-b04aecfccf1f), a sidechain built on top of the Ethereum main chain, where the transactions are nearly frictionless and the marginal cost approaches zero. Beyond the efficiency benefits, PlasmaChain offers an implementation of Plasma Cash, an approach to the challenge of securely moving cryptoassets on and off the main network. 
+Nonce is being developed on [Loom Network's PlasmaChain](https://medium.com/loom-network/deploying-your-first-app-to-loom-plasmachain-installing-loom-setting-up-your-environment-and-b04aecfccf1f), a sidechain built on top of the Ethereum main chain, where the transactions are nearly frictionless and the marginal cost approaches zero. Beyond the efficiency benefits, PlasmaChain offers an implementation of Plasma Cash, an approach to the challenge of securely moving cryptoassets on and off the main network. 
 
 ![Loom](./src/assets/readme/loom-network.jpg)
 
@@ -64,7 +64,7 @@ A generic user can play either role.
 
 ## **Stage 2: Front End Config** 
 
-To get started with Loom, the initial Nonce directory cloned the [Truffle Dappchain Example](https://github.com/loomnetwork/truffle-dappchain-example) which uses a conventional React web setup. Nonce is mobile first, however, so this stage involved migrating the project to React Native. The project also uses Redux, Typescript and several other JavaScript libraries. 
+To get started with Loom, the initial Nonce directory cloned the [Truffle Dappchain Example](https://github.com/loomnetwork/truffle-dappchain-example) which uses a conventional React web setup. Nonce is mobile first, however, so this stage involved migrating the project to React Native. Nonce also uses Redux, Typescript and several other JavaScript libraries. 
 
 <p align="center">
   <img src="./src/assets/readme/native.png" width="200"  /> 
