@@ -66,7 +66,7 @@ A generic user can play either role.
 
 To get started with Loom, the initial Nonce directory cloned the [Truffle Dappchain Example](https://github.com/loomnetwork/truffle-dappchain-example) which uses a conventional React web setup. Nonce is mobile first, however, so this stage involved migrating the project to React Native. The project also uses Redux, Typescript and several other JavaScript libraries. 
 
-<p>
+<p align="center">
   <img src="./src/assets/readme/redux.png" width="200" style="margin-bottom: -20px" /> 
   <img src="./src/assets/readme/react-native.png" width="200" /> 
   <img src="./src/assets/readme/typescript.png" width="200" style="margin-bottom: 15px"/> 
