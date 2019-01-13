@@ -31,7 +31,9 @@ Configuring Loom required downloading a local client, running a few initializati
 
 In addition to Loom, Nonce uses a conventional Truffle project setup for smart contract and UI code management.
 
-![Truffle](./src/assets/readme/truffle.png)
+<p align="center">
+  <img src="./src/assets/readme/truffle.png" width="450px" /> 
+</p>
 
 ## **Stage 1: Applying Loom's ERC721x Token Standard** 
 
