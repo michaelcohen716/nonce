@@ -68,7 +68,6 @@ To get started with Loom, the initial Nonce directory cloned the [Truffle Dappch
 
 <p align="center">
   <img src="./src/assets/readme/redux.png" width="200" style="margin-bottom: -20px" /> 
-  <img src="./src/assets/readme/react-native.png" width="200" /> 
   <img src="./src/assets/readme/typescript.png" width="200" style="margin-bottom: 15px"/> 
 </p>
 
