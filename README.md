@@ -4,6 +4,14 @@ _Nonce is a ticketing, content and collectible dApp (decentralized app) powered 
   <img src="./src/assets/readme/provisional-logo.png" width="550px" /> 
 </p>
 
+# **Table of Contents*
+
+0. [ Ethereum Config ](#eth-config)
+1. [ Implementing ERC721X Token Standard](#erc721x)
+2. [ Front End Config](#frontend-config)
+3. [ Authentication and Identity Management](#auth)
+
+<a name="eth-config"></a>
 ## **Stage 0: Ethereum Config**
 
 There are two key issues with the vast majority of dApps:
@@ -35,6 +43,7 @@ In addition to Loom, Nonce uses a conventional Truffle project setup for smart c
   <img src="./src/assets/readme/truffle.png" width="450px" /> 
 </p>
 
+<a name="erc721x"></a>
 ## **Stage 1: Applying Loom's ERC721x Token Standard**
 
 The bare bones smart contract implementation of Nonce should satisfy the following product specifications:
@@ -64,6 +73,7 @@ A generic user can play either role.
 - Foundation for future implementation of PlasmaChain gateway: [PR #3](https://github.com/michaelcohen716/nonce/pull/3)
 - Testing: [PR #4](https://github.com/michaelcohen716/nonce/pull/4), [PR #5](https://github.com/michaelcohen716/nonce/pull/5)
 
+<a name="frontend-config"></a>
 ## **Stage 2: Front End Config**
 
 To get started with Loom, the initial Nonce directory cloned the [Truffle Dappchain Example](https://github.com/loomnetwork/truffle-dappchain-example) which uses a conventional React web setup. Nonce is mobile first, however, so this stage involved migrating the project to React Native. Nonce also uses Redux, Typescript and several other JavaScript libraries.
@@ -79,4 +89,6 @@ To get started with Loom, the initial Nonce directory cloned the [Truffle Dappch
 - React Native, Typescript setup: [PR #6](https://github.com/michaelcohen716/nonce/pull/6)
 - Redux, Linting: [PR #8](https://github.com/michaelcohen716/nonce/pull/8)
 
+<a name="auth"></a>
+## **Stage 3: Authentication and Identity Management**
 _...continued_
