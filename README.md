@@ -4,7 +4,7 @@ _Nonce is a ticketing, content and collectible dApp (decentralized app) powered 
   <img src="./src/assets/readme/provisional-logo.png" width="550px" /> 
 </p>
 
-# **Table of Contents*
+# **Table of Contents**
 
 0. [ Ethereum Config ](#eth-config)
 1. [ Implementing ERC721X Token Standard](#erc721x)
