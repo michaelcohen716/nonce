@@ -21,7 +21,8 @@ library AddressSet {
             self.memberIndices[self.members[self.memberIndices[other] - 1]] = self.memberIndices[other];
             delete self.memberIndices[other];
             // remove the last element
-            self.members.pop();
+
+            // FIXME self.members.pop();
         }
     }
 
