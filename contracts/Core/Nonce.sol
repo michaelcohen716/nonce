@@ -44,8 +44,8 @@ contract Nonce is ERC721XToken, Ownable {
         accountRegistry = AccountRegistryInterface(accountRegistryAddress);
     }
 
-    modifier ensureRegisteredAddress(){
-        require(accountRegistry.hasIdentity(msg.sender), "Address not registered");
+    modifier ensureRegisteredAddress(address _address){
+        require(accountRegistry.hasIdentity(_address), "Address not registered");
         _;
     }
 
@@ -58,7 +58,7 @@ contract Nonce is ERC721XToken, Ownable {
      * @param _supply Maximum quantity of token available [Enter '0' for unlimited supply token]
      * @param _price Price for other users to buy token [Enter '0' for free token]
      */
-    function mintToken(bytes32 _tokenName, uint _supply, uint _price) public ensureRegisteredAddress {
+    function mintToken(bytes32 _tokenName, uint _supply, uint _price) public ensureRegisteredAddress(msg.sender) {
         uint tokenId = uint(keccak256(abi.encodePacked(msg.sender, _tokenName, block.number)));
         require(!exists(tokenId), "Error: Tried to mint duplicate token id");
 
@@ -83,7 +83,7 @@ contract Nonce is ERC721XToken, Ownable {
      * @param _tokenId tokenId
      * @param _amount quantity of tokens purchased/acquired
      */
-    function acquireToken(uint _tokenId, uint _amount) public payable ensureRegisteredAddress { 
+    function acquireToken(uint _tokenId, uint _amount) public payable ensureRegisteredAddress(msg.sender) { 
         (, , address tokenOwner, uint supply, uint price) = getTokenWithId(_tokenId);
         require(exists(_tokenId), "TokenID has not been minted"); 
         require(msg.value == price, "Incorrect price for token");

@@ -1,17 +1,26 @@
 const web3 = require('web3')
 const truffleAssert = require('truffle-assertions')
 const Nonce = artifacts.require('Nonce')
+const AccountRegistry = artifacts.require('AccountRegistry')
+const utils = require('../test-utils/utils')
 
 contract('Nonce', async accounts => {
-  let nonce
+  let nonce, accountRegistry, aliceUserId, bobUserId
   const [alice, bob, christina] = accounts
 
   before(async () => {
-    nonce = await Nonce.deployed()
+    accountRegistry = await AccountRegistry.deployed()
+    nonce = await Nonce.deployed(accountRegistry.address)
+
+    const aliceUserTx = await accountRegistry.createIdentity({ from: alice })
+    aliceUserId = utils.grabUserIdFromTx(aliceUserTx)
+
+    const bobeUserTx = await accountRegistry.createIdentity({ from: bob })
+    bobUserId = utils.grabUserIdFromTx(bobeUserTx)
   })
 
   it('Should have an address for Nonce', async () => {
-    assert(nonce.address)
+    assert(accountRegistry.address)
   })
 
   it('Should be able to mint a free token with minter as creator', async () => {
@@ -46,7 +55,7 @@ contract('Nonce', async accounts => {
       web3.utils.fromAscii('ExpensiveToken'),
       100,
       priceInWei,
-      { from: christina }
+      { from: bob }
     )
 
     truffleAssert.eventEmitted(tx3, 'TokenMinted', async ev => {

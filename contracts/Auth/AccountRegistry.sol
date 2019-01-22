@@ -26,6 +26,7 @@ contract AccountRegistry {
     event IdentityCreated(address indexed primaryAddress, uint indexed userId);
 
     mapping (uint => Identity) private identityDirectory;
+    mapping (address => uint) private primaryAddressDirectory;
     mapping (address => uint) private secondaryAddressesDirectory;
 
     function createIdentity() public returns (uint id) {
@@ -37,6 +38,7 @@ contract AccountRegistry {
         Identity storage _identity = identityDirectory[userId];
 
         _identity.primaryAddress = primaryAddress;
+        primaryAddressDirectory[primaryAddress] = userId;
 
         emit IdentityCreated(msg.sender, userId);
 
@@ -44,7 +46,7 @@ contract AccountRegistry {
     }
 
     function hasIdentity(address _address) public view returns (bool) {
-        return identityExists(secondaryAddressesDirectory[_address]);
+        return identityExists(secondaryAddressesDirectory[_address]) || (primaryAddressDirectory[_address] > 0);
     }
 
     modifier _hasIdentity(address _address, bool check) {
