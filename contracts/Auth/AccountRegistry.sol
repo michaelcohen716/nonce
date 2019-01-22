@@ -2,17 +2,6 @@ pragma solidity 0.4.24;
 
 import "./AddressSet.sol";
 
-// Sign up flow:
-// 1) Sign up with phone number and password (4-digit pin too?), validated with text
-// 2) On text validation, save number to Firebase
-// 3) On text validation, generate and save Eth keys to local storage
-// 4) On key generation, invoke createIdentity, assigning userID
-
-// Sign in flow
-// 1) Enter password
-//    - Recover password  
-//       1) 
-
 contract AccountRegistry {
     using AddressSet for AddressSet.Set;
 
@@ -67,15 +56,15 @@ contract AccountRegistry {
         require(identityExists(userId), "The identity does not exist.");
         _;
     }
-    
-    // mapping(uint => address[]) userIdToAddress;
-    // mapping(address => uint) userAddressToId;
-    // mapping(bytes32 => uint) hashedNumberToId;
-
-    // function createIdentity(uint _phoneNumber) public {
-    //     require(userAddressToId[msg.sender] == 0, "Address already registered");
-    //     userIdToAddress[userId++].push(msg.sender);
-    //     hashedNumberToId[keccak256(abi.encodePacked(_phoneNumber))] = userId - 1;
-    // }
-
 }
+
+// Sign up flow:
+// 1) Sign up with phone number and password (4-digit pin too?), validated with text
+// 2) On text validation, save number to Firebase
+// 3) On text validation, generate and save Eth keys to local storage
+// 4) On key generation, invoke createIdentity, assigning userID
+
+// Sign in flow
+// 1) Enter password
+//    - Recover password  
+//       1) ...
