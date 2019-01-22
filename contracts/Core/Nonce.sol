@@ -3,6 +3,7 @@ pragma solidity ^0.4.24;
 import "./ERC721X/ERC721XToken.sol";
 import "../Helpers/Ownable.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "../Auth/AccountRegistryInterface.sol";
 
 // Deployed to extdev
 contract Nonce is ERC721XToken, Ownable {
@@ -13,6 +14,8 @@ contract Nonce is ERC721XToken, Ownable {
     function symbol() external view returns (string) {
         return "NONCE";
     }
+
+    AccountRegistryInterface accountRegistry;
 
     mapping(uint => uint) public tokenIdToIndex;
     mapping(uint => uint) public tokenIdToAvailableSupply;
@@ -37,6 +40,15 @@ contract Nonce is ERC721XToken, Ownable {
      * }
     */
 
+    constructor (address accountRegistryAddress) public {
+        accountRegistry = AccountRegistryInterface(accountRegistryAddress);
+    }
+
+    modifier ensureRegisteredAddress(address _address){
+        require(accountRegistry.hasIdentity(_address), "Address not registered");
+        _;
+    }
+
     mapping(uint => uint) internal nftTokenIdToMouldId;
     uint nftTokenIdIndex = 1000000;
 
@@ -46,7 +58,7 @@ contract Nonce is ERC721XToken, Ownable {
      * @param _supply Maximum quantity of token available [Enter '0' for unlimited supply token]
      * @param _price Price for other users to buy token [Enter '0' for free token]
      */
-    function mintToken(bytes32 _tokenName, uint _supply, uint _price) public {
+    function mintToken(bytes32 _tokenName, uint _supply, uint _price) public ensureRegisteredAddress(msg.sender) {
         uint tokenId = uint(keccak256(abi.encodePacked(msg.sender, _tokenName, block.number)));
         require(!exists(tokenId), "Error: Tried to mint duplicate token id");
 
@@ -71,7 +83,7 @@ contract Nonce is ERC721XToken, Ownable {
      * @param _tokenId tokenId
      * @param _amount quantity of tokens purchased/acquired
      */
-    function acquireToken(uint _tokenId, uint _amount) public payable { 
+    function acquireToken(uint _tokenId, uint _amount) public payable ensureRegisteredAddress(msg.sender) { 
         (, , address tokenOwner, uint supply, uint price) = getTokenWithId(_tokenId);
         require(exists(_tokenId), "TokenID has not been minted"); 
         require(msg.value == price, "Incorrect price for token");

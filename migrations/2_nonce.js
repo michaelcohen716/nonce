@@ -1,17 +1,12 @@
-var Nonce = artifacts.require("./Nonce.sol");
+var Nonce = artifacts.require('./Nonce.sol')
+var AccountRegistry = artifacts.require('./AccountRegistry.sol')
 
-module.exports = function (deployer, network) {
-    if (network === 'rinkeby') {
-        return
-    }
+module.exports = function(deployer, network) {
+  if (network === 'rinkeby') {
+    return
+  }
 
-    deployer.then(async () => {
-        await deployer.deploy(Nonce)
-        const nonceInstance = await Nonce.deployed();
-
-        console.log('\n*************************************************************************\n')
-        console.log(`Nonce Contract Address: ${nonceInstance.address}`)
-    })
-
-    deployer.deploy(Nonce);
-};
+  deployer.deploy(AccountRegistry).then(function() {
+    return deployer.deploy(Nonce, AccountRegistry.address)
+  })
+}
