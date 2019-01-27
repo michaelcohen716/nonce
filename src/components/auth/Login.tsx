@@ -1,49 +1,43 @@
 import * as React from 'react'
-import { connect } from 'react-redux'
-import { AuthActions, emailChanged, passwordChanged } from '../../store/auth'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import Button from '../common/Button'
 import metrics from '../../config/metrics'
-import LoginFormInput from './LoginFormInput'
-import { ApplicationState, ConnectedReduxProps } from '../../store'
-import { Dispatch } from 'redux'
 import {
   FormLabel,
   FormInput,
   FormValidationMessage,
 } from 'react-native-elements'
-
-// interface LoginProps {
-//   email: string
-//   password: string
-// }
+import { signupUser } from '../../store/auth'
 
 interface LoginState {
   email: string
   password: string
+  showError: boolean
+}
+
+interface LoginProps {
+  authenticating: boolean
 }
 
 interface LoginPropsFromDispatch {
-  emailChanged: typeof emailChanged
-  passwordChanged: typeof passwordChanged
+  signupUser: typeof signupUser
 }
 
-type AllProps = LoginPropsFromDispatch
-// type AllProps = LoginProps & LoginPropsFromDispatch
+type AllProps = LoginProps & LoginPropsFromDispatch
 
 class Login extends React.Component<AllProps, LoginState> {
   state = {
     email: '',
     password: '',
+    showError: false,
   }
 
   render() {
     const { container, content, login, auth } = styles
     const {
-      props: { emailChanged, passwordChanged },
-      state: { email, password },
+      state: { email, password, showError },
+      props: { authenticating },
     } = this
-    console.log(this)
 
     return (
       <View style={container}>
@@ -57,52 +51,35 @@ class Login extends React.Component<AllProps, LoginState> {
           />
           <View style={auth}>
             <View style={login}>
-              <LoginFormInput
-                label="Email"
+              <FormLabel>Email</FormLabel>
+              <FormInput
                 value={email}
-                onChangeText={emailChanged}
+                onChangeText={email => this.setState({ email })}
               />
             </View>
 
             <View style={login}>
-              <LoginFormInput
-                label="Password"
-                value={password}
-                onChangeText={passwordChanged}
+              <FormLabel>Password</FormLabel>
+              <FormInput
                 secureTextEntry={true}
-                validationErrorMessage="Incorrect password/email combination"
+                value={password}
+                onChangeText={password => this.setState({ password })}
               />
+              {showError && (
+                <FormValidationMessage>
+                  {'Bad email/pw combo'}
+                </FormValidationMessage>
+              )}
             </View>
-            <Button label="Login" onPress={() => console.log('login')} />
+            <Button label="Login" onPress={() => this.props.signupUser()} />
           </View>
         </View>
       </View>
     )
   }
-
-  private onEmailChange = (email: string) => {
-    this.setState({ email })
-  }
-
-  private onPasswordChange = (password: string) => {
-    this.setState({ password })
-  }
 }
 
-const mapStateToProps = ({ auth }: ApplicationState) => ({
-  email: auth.email,
-  password: auth.password,
-})
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  emailChanged: (email: string) => dispatch(emailChanged(email)),
-  passwordChanged: (password: string) => dispatch(passwordChanged(password)),
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login)
+export default Login
 
 const styles = StyleSheet.create({
   container: {
