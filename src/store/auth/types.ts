@@ -1,11 +1,12 @@
 export enum AuthActions {
-  EMAIL_CHANGED = 'EMAIL_CHANGED',
-  PASSWORD_CHANGED = 'PASSWORD_CHANGED',
   SIGNUP_USER = 'SIGNUP_USER',
+  SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS',
+  LOGIN_USER = 'LOGIN_USER',
+  LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS',
+  LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE',
 }
 
 export interface AuthState {
-  email: string
-  password: string
   authenticating: boolean
+  user: string
 }

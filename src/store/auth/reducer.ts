@@ -2,23 +2,30 @@ import { Reducer } from 'redux'
 import { AuthState, AuthActions } from './types'
 
 const INITIAL_STATE: AuthState = {
-  email: '',
-  password: '',
   authenticating: false,
+  user: '',
 }
 
 const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case AuthActions.EMAIL_CHANGED: {
-      return { ...state, email: action.email }
-    }
-
-    case AuthActions.PASSWORD_CHANGED: {
-      return { ...state, password: action.password }
-    }
-
     case AuthActions.SIGNUP_USER: {
       return { ...state, authenticating: true }
+    }
+
+    case AuthActions.SIGNUP_USER_SUCCESS: {
+      return { ...state, authenticating: false, user: action.payload }
+    }
+
+    case AuthActions.LOGIN_USER: {
+      return { ...state, authenticating: true }
+    }
+
+    case AuthActions.LOGIN_USER_SUCCESS: {
+      return { ...state, authenticating: false, user: action.payload }
+    }
+
+    case AuthActions.LOGIN_USER_FAILURE: {
+      return { ...state, authenticating: false }
     }
 
     default: {

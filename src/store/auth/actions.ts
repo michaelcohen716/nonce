@@ -1,11 +1,12 @@
 import { action } from 'typesafe-actions'
-
 import { AuthActions } from './types'
 
-export const emailChanged = (email: string) =>
-  action(AuthActions.EMAIL_CHANGED, email)
-export const passwordChanged = (password: string) =>
-  action(AuthActions.PASSWORD_CHANGED, password)
-
-// export const signupUser = (email: string, password: string) =>
 export const signupUser = () => action(AuthActions.SIGNUP_USER)
+export const signupUserSuccess = (email: string) =>
+  action(AuthActions.SIGNUP_USER_SUCCESS, email)
+
+export const loginUser = () => action(AuthActions.LOGIN_USER)
+export const loginUserSuccess = (email: string) =>
+  action(AuthActions.LOGIN_USER_SUCCESS, email)
+
+export const loginUserFailure = () => action(AuthActions.LOGIN_USER_FAILURE)

@@ -4,14 +4,19 @@ import colors from '../../config/colors'
 
 interface Props {
   label: string
+  disabled?: boolean
   onPress: () => void
 }
 
 class Button extends React.Component<Props> {
   render() {
-    const { label, onPress } = this.props
+    const { label, onPress, disabled } = this.props
     return (
-      <TouchableOpacity style={styles.container} onPress={onPress}>
+      <TouchableOpacity
+        style={styles.container}
+        onPress={onPress}
+        disabled={disabled}
+      >
         <Text style={styles.text}>{label}</Text>
       </TouchableOpacity>
     )
