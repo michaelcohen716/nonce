@@ -7,12 +7,20 @@ import {
   FormInput,
   FormValidationMessage,
 } from 'react-native-elements'
+import firebase from 'firebase'
 import { signupUser } from '../../store/auth'
+import { createUser } from '../../firebase/auth'
+
+enum UserTypes {
+  LOGIN = 'LOGIN',
+  SIGNUP = 'SIGNUP',
+}
 
 interface LoginState {
   email: string
   password: string
   showError: boolean
+  userType: UserTypes | null
 }
 
 interface LoginProps {
@@ -30,12 +38,13 @@ class Login extends React.Component<AllProps, LoginState> {
     email: '',
     password: '',
     showError: false,
+    userType: null,
   }
 
   render() {
     const { container, content, login, auth } = styles
     const {
-      state: { email, password, showError },
+      state: { email, password, showError, userType },
       props: { authenticating },
     } = this
 
@@ -54,6 +63,7 @@ class Login extends React.Component<AllProps, LoginState> {
               <FormLabel>Email</FormLabel>
               <FormInput
                 value={email}
+                onBlur={() => this.checkEmailType()}
                 onChangeText={email => this.setState({ email })}
               />
             </View>
@@ -71,11 +81,40 @@ class Login extends React.Component<AllProps, LoginState> {
                 </FormValidationMessage>
               )}
             </View>
-            <Button label="Login" onPress={() => this.props.signupUser()} />
+            <Button
+              label={userType ? String(userType) : ''}
+              onPress={() => this.signupUser()}
+            />
           </View>
         </View>
       </View>
     )
+  }
+
+  private checkEmailType = () => {
+    firebase
+      .auth()
+      .fetchSignInMethodsForEmail(this.state.email)
+      .then(retVal => {
+        if (retVal.length) {
+          this.setState({ userType: UserTypes.LOGIN })
+        } else {
+          this.setState({ userType: UserTypes.SIGNUP })
+        }
+      })
+  }
+
+  private signupUser = () => {
+    const { email, password } = this.state
+    this.props.signupUser()
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(user => console.log(user))
+      .catch(error => console.log(error))
+    // createUser(email, password).then(user => {
+
+    // })
   }
 }
 

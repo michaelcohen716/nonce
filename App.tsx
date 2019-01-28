@@ -1,3 +1,8 @@
+import {
+  FIREBASE_API_KEY,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_SENDER_ID,
+} from 'react-native-dotenv'
 import * as React from 'react'
 import { Provider } from 'react-redux'
 import { rootReducer } from './src/store'
@@ -10,12 +15,12 @@ import firebase from 'firebase'
 export default class App extends React.Component<{}> {
   componentWillMount() {
     const config = {
-      apiKey: process.env.FIREBASE_API_KEY,
-      authDomain: `${process.env.FIREBASE_PROJECT_ID}.firebaseapp.com`,
-      databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}firebaseio.com`,
-      projectId: `${process.env.FIREBASE_PROJECT_ID}`,
-      storageBucket: `${process.env.FIREBASE_PROJECT_ID}.appspot.com`,
-      messagingSenderId: `${process.env.FIREBASE_SENDER_ID}`,
+      apiKey: FIREBASE_API_KEY,
+      authDomain: `${FIREBASE_PROJECT_ID}.firebaseapp.com`,
+      databaseURL: `https://${FIREBASE_PROJECT_ID}firebaseio.com`,
+      projectId: `${FIREBASE_PROJECT_ID}`,
+      storageBucket: `${FIREBASE_PROJECT_ID}.appspot.com`,
+      messagingSenderId: `${FIREBASE_SENDER_ID}`,
     }
 
     firebase.initializeApp(config)
