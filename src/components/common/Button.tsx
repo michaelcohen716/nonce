@@ -12,11 +12,7 @@ class Button extends React.Component<Props> {
   render() {
     const { label, onPress, disabled } = this.props
     return (
-      <TouchableOpacity
-        style={styles.container}
-        onPress={onPress}
-        disabled={disabled}
-      >
+      <TouchableOpacity style={styles.container} onPress={onPress}>
         <Text style={styles.text}>{label}</Text>
       </TouchableOpacity>
     )
@@ -25,7 +21,6 @@ class Button extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    // width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: colors.DODGER_BLUE,
