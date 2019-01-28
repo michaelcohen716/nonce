@@ -20,7 +20,6 @@
     "pretty": "prettier --write --tab-width 4 \"src/**/*.ts\""
   },
   "dependencies": {
-    "@types/react-redux": "^6.0.12",
     "@types/redux-logger": "^3.0.6",
     "bip39": "^2.5.0",
     "bn.js": "^4.11.8",
@@ -28,21 +27,26 @@
     "dotenv": "^6.2.0",
     "ethereumjs-wallet": "^0.6.2",
     "expo": "^27.0.1",
+    "firebase": "^5.8.0",
     "loom-js": "1.27.1",
     "loom-truffle-provider": "^0.8.0",
     "openzeppelin-solidity": "^1.12.0",
     "react": "16.3.1",
     "react-native": "~0.55.2",
+    "react-native-elements": "^0.19.1",
+    "react-native-router-flux": "^4.0.6",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "truffle": "^4.1.14",
-    "truffle-hdwallet-provider": "^0.0.6"
+    "truffle-hdwallet-provider": "^0.0.6",
+    "typesafe-actions": "^3.0.0"
   },
   "devDependencies": {
     "@types/jest": "^22.2.3",
     "@types/react": "^16.3.14",
     "@types/react-native": "^0.55.14",
+    "@types/react-redux": "^6.0.13",
     "@types/react-test-renderer": "^16.0.1",
     "chai": "^4.2.0",
     "eslint": "^5.11.0",
@@ -52,6 +56,7 @@
     "eslint-plugin-react": "^7.11.1",
     "jest-expo": "~27.0.0",
     "prettier": "^1.15.3",
+    "react-native-dotenv": "^0.2.0",
     "react-native-scripts-ts": "1.15.0",
     "react-native-typescript-transformer": "^1.2.3",
     "react-test-renderer": "16.3.1",
