@@ -10,6 +10,8 @@ import {
 import firebase from 'firebase'
 import { LoginPropsFromDispatch } from './LoginContainer'
 import { Actions } from 'react-native-router-flux'
+import storage, { storageSave } from '../../localStorage'
+import { generateOrImportKeystore } from '../../keystore'
 
 enum UserTypes {
   LOGIN = 'LOGIN',
@@ -38,7 +40,7 @@ class Login extends React.Component<AllProps, LoginState> {
   }
 
   render() {
-    const { container, content, login, auth, button } = styles
+    const { container, content, login, auth, button, image } = styles
     const {
       state: { email, password, showError, userType },
       props: { authenticating },
@@ -46,50 +48,50 @@ class Login extends React.Component<AllProps, LoginState> {
 
     return (
       <View style={container}>
-        <View style={content}>
+        <View style={image}>
           <Image
             source={require('../../assets/readme/provisional-logo.png')}
             style={{
-              width: 250,
-              resizeMode: 'cover',
+              width: 150,
+              height: 150,
             }}
           />
-          <View style={auth}>
-            <View style={login}>
-              <FormLabel>Email</FormLabel>
-              <FormInput
-                value={email}
-                onBlur={() => this.checkEmailType()}
-                onChangeText={email => this.setState({ email })}
-              />
-            </View>
+        </View>
+        <View style={auth}>
+          <View style={login}>
+            <FormLabel>Email</FormLabel>
+            <FormInput
+              value={email}
+              onBlur={() => this.checkEmailType()}
+              onChangeText={email => this.setState({ email })}
+            />
+          </View>
 
-            <View style={login}>
-              <FormLabel>Password</FormLabel>
-              <FormInput
-                secureTextEntry={true}
-                value={password}
-                onChangeText={password =>
-                  this.setState({ password, showError: false })
-                }
+          <View style={login}>
+            <FormLabel>Password</FormLabel>
+            <FormInput
+              secureTextEntry={true}
+              value={password}
+              onChangeText={password =>
+                this.setState({ password, showError: false })
+              }
+            />
+            {showError && (
+              <FormValidationMessage>
+                {'Bad email/pw combo'}
+              </FormValidationMessage>
+            )}
+          </View>
+          <View style={button}>
+            {authenticating ? (
+              <ActivityIndicator size="small" color="#00ff00" />
+            ) : (
+              <Button
+                label={userType ? String(userType) : ''}
+                onPress={() => this.validateUser()}
+                disabled={!userType || password.length === 0}
               />
-              {showError && (
-                <FormValidationMessage>
-                  {'Bad email/pw combo'}
-                </FormValidationMessage>
-              )}
-            </View>
-            <View style={button}>
-              {authenticating ? (
-                <ActivityIndicator size="small" color="#00ff00" />
-              ) : (
-                <Button
-                  label={userType ? String(userType) : ''}
-                  onPress={() => this.validateUser()}
-                  disabled={!userType || password.length === 0}
-                />
-              )}
-            </View>
+            )}
           </View>
         </View>
       </View>
@@ -127,8 +129,17 @@ class Login extends React.Component<AllProps, LoginState> {
       .catch(() => this.loginUserFailure())
   }
 
-  private loginUserSuccess = () => {
+  private loginUserSuccess = async () => {
     this.props.loginUserSuccess(this.state.email)
+    // const newKeystore = await generateOrImportKeystore({
+    //   password: this.state.password,
+    // })
+
+    // await storageSave({
+    //   key: 'keystore',
+    //   data: newKeystore,
+    // })
+    // console.log(Object.getOwnPropertyNames(storage))
     Actions.home()
   }
 
@@ -161,8 +172,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'space-around',
-    height: metrics.DEVICE_HEIGHT * 0.5,
+    justifyContent: 'center',
+    height: metrics.DEVICE_HEIGHT,
+  },
+  image: {
+    // height: '20%',
   },
   content: {
     flex: 1,
@@ -171,10 +185,10 @@ const styles = StyleSheet.create({
   },
   auth: {
     justifyContent: 'center',
-    height: metrics.DEVICE_HEIGHT * 0.5,
+    // height: '40%',
   },
   login: {
-    height: '20%',
+    // height: '25%',
     width: metrics.DEVICE_WIDTH * 0.75,
   },
   button: {
