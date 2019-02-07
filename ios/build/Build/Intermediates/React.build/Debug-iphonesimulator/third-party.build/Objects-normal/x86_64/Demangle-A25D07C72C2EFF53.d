@@ -1,0 +1,24 @@
+dependencies: \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/third-party/folly-2018.10.22.00/folly/Demangle.cpp \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Demangle.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/FBString.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/CppAttributes.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Portability.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/portability/Config.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/CPortability.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Traits.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/hash/Hash.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Utility.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/functional/ApplyTuple.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/functional/Invoke.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Preprocessor.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/hash/SpookyHashV1.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/hash/SpookyHashV2.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/Bits.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/ConstexprMath.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/Assume.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/portability/Builtins.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/Exception.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/memory/Malloc.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/memory/detail/MallocImpl.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/detail/Demangle.h

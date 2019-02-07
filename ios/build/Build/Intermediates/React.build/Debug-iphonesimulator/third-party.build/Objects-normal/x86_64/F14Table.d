@@ -1,0 +1,26 @@
+dependencies: \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/third-party/folly-2018.10.22.00/folly/container/detail/F14Table.cpp \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/container/detail/F14Table.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Bits.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/Bits.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/ConstexprMath.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Portability.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/portability/Config.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/CPortability.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Utility.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Traits.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/Assume.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/portability/Builtins.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Likely.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/ScopeGuard.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/Preprocessor.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/UncaughtExceptions.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/functional/ApplyTuple.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/functional/Invoke.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/Align.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/Exception.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/CppAttributes.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/Launder.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/lang/SafeAssert.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/container/detail/F14Defaults.h \
+  /Users/michaelcohen/Desktop/projects/nonce/dapp/node_modules/react-native/React/../third-party/folly-2018.10.22.00/folly/container/detail/F14IntrinsicsAvailability.h

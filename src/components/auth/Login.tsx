@@ -131,15 +131,15 @@ class Login extends React.Component<AllProps, LoginState> {
 
   private loginUserSuccess = async () => {
     this.props.loginUserSuccess(this.state.email)
-    // const newKeystore = await generateOrImportKeystore({
-    //   password: this.state.password,
-    // })
+    const newKeystore = await generateOrImportKeystore({
+      password: this.state.password,
+    })
 
-    // await storageSave({
-    //   key: 'keystore',
-    //   data: newKeystore,
-    // })
-    // console.log(Object.getOwnPropertyNames(storage))
+    await storageSave({
+      key: 'keystore',
+      data: newKeystore,
+    })
+    console.log(Object.getOwnPropertyNames(storage))
     Actions.home()
   }
 

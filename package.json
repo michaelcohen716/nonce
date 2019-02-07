@@ -9,13 +9,12 @@
     "deploy:reset:extdev": "truffle deploy --reset --network extdev_plasma_us1",
     "deploy:rinkeby": "truffle deploy --network rinkeby",
     "deploy:reset:rinkeby": "truffle deploy --reset --network rinkeby",
-    "test": "truffle test --network loom_dapp_chain",
+    "test": "jest",
     "test:extdev": "truffle test --network extdev_plasma_us1",
     "gen:rinkeby-key": "node ./scripts/gen-eth-key.js rinkeby",
-    "start": "react-native-scripts-ts start",
-    "eject": "react-native-scripts-ts eject",
-    "android": "react-native-scripts-ts android",
-    "ios": "react-native-scripts-ts ios",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "lint": "tslint 'src/**/*.{ts, tsx}'",
     "pretty": "prettier --write --tab-width 4 \"src/**/*.ts\"",
     "postinstall": "node_modules/.bin/rn-nodeify --install crypto --hack"
@@ -30,13 +29,12 @@
     "dotenv": "^6.2.0",
     "ethereumjs-wallet": "^0.6.2",
     "ethereumjs-wallet-react-native": "^0.6.7",
-    "expo": "^27.0.1",
     "firebase": "^5.8.0",
     "loom-js": "1.27.1",
     "loom-truffle-provider": "^0.8.0",
     "openzeppelin-solidity": "^1.12.0",
     "react": "16.3.1",
-    "react-native": "~0.55.4",
+    "react-native": "0.55.2",
     "react-native-crypto": "^2.1.2",
     "react-native-elements": "^0.19.1",
     "react-native-randombytes": "^3.5.2",
@@ -59,13 +57,15 @@
     "@types/react-redux": "^6.0.13",
     "@types/react-test-renderer": "^16.0.1",
     "babel-preset-react-native": "2.1.0",
+    "babel-preset-react-native-stage-0": "^1.0.1",
     "chai": "^4.2.0",
     "eslint": "^5.11.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "jest-expo": "~27.0.0",
+    "jest": "^24.1.0",
+    "jest-react-native": "^18.0.0",
     "prettier": "^1.15.3",
     "react-native-dotenv": "^0.2.0",
     "react-native-scripts-ts": "1.15.0",
@@ -97,7 +97,7 @@
       "json",
       "node"
     ],
-    "preset": "jest-expo",
+    "preset": "react-native",
     "testMatch": [
       "**/__tests__/**/*.[tj]s?(x)",
       "**/?(*.)(spec|test).[tj]s?(x)"
@@ -106,7 +106,6 @@
       "^.+\\.tsx?$": "ts-jest"
     }
   },
-  "main": "./node_modules/react-native-scripts-ts/build/bin/crna-entry.js",
   "react-native": {
     "crypto": "react-native-crypto"
   },
