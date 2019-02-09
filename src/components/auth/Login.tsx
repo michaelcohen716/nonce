@@ -9,11 +9,6 @@ import {
 } from 'react-native'
 import Button from '../common/Button'
 import metrics from '../../config/metrics'
-// import {
-//   FormLabel,
-//   FormInput,
-//   FormValidationMessage,
-// } from 'react-native-elements'
 import firebase from 'firebase'
 import { LoginPropsFromDispatch } from './LoginContainer'
 import { Actions } from 'react-native-router-flux'
