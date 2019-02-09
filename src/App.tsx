@@ -5,11 +5,11 @@ import {
 } from 'react-native-dotenv'
 import * as React from 'react'
 import { Provider } from 'react-redux'
-import { rootReducer } from './src/store'
+import { rootReducer } from './store'
 import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 import logger from 'redux-logger'
-import Router from './src/Router'
+import Router from './Router'
 import firebase from 'firebase'
 
 export default class App extends React.Component<{}> {

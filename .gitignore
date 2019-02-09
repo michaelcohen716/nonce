@@ -5,6 +5,8 @@ extdev_private_key
 .eslintrc.js
 src/contracts
 .expo/
+ios/
+android/
 
 .env.local
 .env.development.local

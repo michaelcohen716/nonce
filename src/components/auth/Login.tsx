@@ -1,12 +1,19 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, Image, ActivityIndicator } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ActivityIndicator,
+  TextInput,
+} from 'react-native'
 import Button from '../common/Button'
 import metrics from '../../config/metrics'
-import {
-  FormLabel,
-  FormInput,
-  FormValidationMessage,
-} from 'react-native-elements'
+// import {
+//   FormLabel,
+//   FormInput,
+//   FormValidationMessage,
+// } from 'react-native-elements'
 import firebase from 'firebase'
 import { LoginPropsFromDispatch } from './LoginContainer'
 import { Actions } from 'react-native-router-flux'
@@ -56,28 +63,24 @@ class Login extends React.Component<AllProps, LoginState> {
           />
           <View style={auth}>
             <View style={login}>
-              <FormLabel>Email</FormLabel>
-              <FormInput
+              <TextInput
                 value={email}
+                placeholder="Email"
                 onBlur={() => this.checkEmailType()}
                 onChangeText={email => this.setState({ email })}
               />
             </View>
 
             <View style={login}>
-              <FormLabel>Password</FormLabel>
-              <FormInput
+              <TextInput
+                placeholder="Password"
                 secureTextEntry={true}
                 value={password}
                 onChangeText={password =>
                   this.setState({ password, showError: false })
                 }
               />
-              {showError && (
-                <FormValidationMessage>
-                  {'Bad email/pw combo'}
-                </FormValidationMessage>
-              )}
+              {showError && <Text>Error</Text>}
             </View>
             <View style={button}>
               {authenticating ? (
