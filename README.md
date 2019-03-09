@@ -76,12 +76,11 @@ A generic user can play either role.
 <a name="frontend-config"></a>
 ## **Stage 2: Front End Config**
 
-To get started with Loom, the initial Nonce directory cloned the [Truffle Dappchain Example](https://github.com/loomnetwork/truffle-dappchain-example) which uses a conventional React web setup. Nonce is mobile first, however, so this stage involved migrating the project to React Native. Nonce also uses Redux, Typescript and several other JavaScript libraries.
+To get started with Loom, the initial Nonce directory cloned the [Truffle Dappchain Example](https://github.com/loomnetwork/truffle-dappchain-example) which uses a conventional React web setup. Nonce also uses Redux for state management.
 
 <p align="center">
-  <img src="./src/assets/readme/native.png" width="200"  /> 
+    React image
   <img src="./src/assets/readme/redux.png" width="200" style="margin-bottom: -20px" /> 
-  <img src="./src/assets/readme/typescript.png" width="200" style="margin-bottom: 15px"/> 
 </p>
 
 #### Pull Requests for this Stage:
