@@ -1,5 +1,7 @@
 import React from 'react'
-import Contract from './contract'
+// import Contract from './contractConnectors.js/SimpleStoreContract'
+import { connect } from "react-redux";
+// import { importContract } from "./redux/contracts/actions";
 
 class SampleApp extends React.Component {
     constructor(props) {
@@ -20,12 +22,23 @@ class SampleApp extends React.Component {
       }
     
       async componentWillMount() {
-        await this.contract.loadContract()
-        this.contract.addEventListener((v) => {
-          this.setState({ value: v._value })
-        })
+        // this.contract = await this.props.SimpleStore.loadContract();
+        // await this.contract.loadContract()
+
+        // this.contract.addEventListener((v) => {
+        //   this.setState({ value: v._value })
+        // })
       }
-    
+
+      async componentDidMount(){
+        this.contract = this.props.SimpleStore;
+        this.contract.addEventListener(v => {
+          this.setState({ value: v._value });
+        });
+        // await this.contract.loadContract()
+        console.log("this.props.SimpleStore", this.props.SimpleStore)
+      }
+      
       onChangeHandler(event) {
         this.value = event.target.value
         const isValid = this.value > 0
@@ -46,6 +59,7 @@ class SampleApp extends React.Component {
       }
     
       render() {
+        console.log(this)
         const loomyAlert = (
           <div className="alert alert-warning">
             I dare you to type 47 and press Confirm !
@@ -75,4 +89,12 @@ class SampleApp extends React.Component {
       }
 }
 
-export default SampleApp;
+const mapStateToProps = state => {
+  return {
+    SimpleStore: state.contracts.SimpleStore
+  }
+}
+
+export default connect(mapStateToProps, null)(SampleApp);
+
+// export default SampleApp;
