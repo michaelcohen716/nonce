@@ -18,6 +18,11 @@ contract AccountRegistry {
     mapping (address => uint) private primaryAddressDirectory;
     mapping (address => uint) private secondaryAddressesDirectory;
 
+    mapping (uint => bool) public saidHello;
+    function sayHello(uint value) public {
+        saidHello[value] = true;
+    }
+
     function createIdentity() public returns (uint id) {
         return createIdentity(msg.sender);
     }

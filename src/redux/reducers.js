@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import contracts from "./contracts/reducer";
+import nonce from "./nonce/reducer";
 
 export default combineReducers({
-    contracts
+    nonce
 })
