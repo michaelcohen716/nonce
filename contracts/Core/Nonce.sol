@@ -15,12 +15,6 @@ contract Nonce is ERC721XToken, Ownable {
         return "NONCE";
     }
 
-    bool hello = false;
-
-    function sayHello() public {
-        hello = true;
-    }
-
     AccountRegistryInterface accountRegistry;
 
     mapping(uint => uint) public tokenIdToIndex;
