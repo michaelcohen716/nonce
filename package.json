@@ -15,6 +15,7 @@
     "gen:rinkeby-key": "node ./scripts/gen-eth-key.js rinkeby"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
     "bip39": "^2.5.0",
     "bn.js": "^4.11.8",
     "commander": "^2.18.0",
@@ -33,6 +34,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "solc": "^0.4.24",
+    "styled-components": "^4.1.3",
     "truffle": "^5.0.1",
     "truffle-assertions": "^0.8.0",
     "truffle-hdwallet-provider": "^0.0.6"
@@ -45,8 +47,8 @@
     "@babel/runtime": "^7.0.0-beta.46",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.0-beta.2",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "react-router-dom": "^4.3.1",
     "regenerator-runtime": "^0.11.1",
     "request-promise": "^4.2.2",
