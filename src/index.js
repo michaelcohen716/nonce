@@ -5,7 +5,9 @@ import reducers from "./redux/reducers";
 import ReduxThunk from "redux-thunk";
 import logger from "redux-logger";
 import { Provider } from "react-redux";
-import SampleApp from "./App";
+import App from "./App";
+import CreateEvent from "./components/CreateEvent";
+import { Switch } from "react-router";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -14,7 +16,10 @@ const store = createStore(reducers, {}, applyMiddleware(ReduxThunk, logger));
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <Route path="/" component={SampleApp} />
+        <Switch>
+            <Route initial path="/create" component={CreateEvent} />
+            <Route path="/" component={App} />
+        </Switch>
     </Router>
   </Provider>,
   document.getElementById("root")
